@@ -9,7 +9,7 @@ export function Home() {
         <>
             <div className="hero h-full overflow-scroll">
                 <img
-                    src="homelander.png"
+                    src={`${process.env.PUBLIC_URL}/homelander.png`}
                     alt="hero or vilain? "
                     className="w-full h-full object-cover object-right md:object-center"
                 />

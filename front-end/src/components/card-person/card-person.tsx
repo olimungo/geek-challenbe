@@ -1,5 +1,4 @@
 import { Person } from 'models';
-import { backEnd } from 'services';
 import { ResponsiveIcon } from 'components/responsive';
 import { MdAlternateEmail, MdPhoneAndroid } from 'react-icons/md';
 import { FaMapMarkerAlt } from 'react-icons/fa';
@@ -20,7 +19,7 @@ export function CardPerson(props: Props) {
                     <div className="w-16 md:w-20 rounded-full">
                         <img
                             id="avatar"
-                            srcSet={`${backEnd}/avatar/${data.id}`}
+                            srcSet={`${process.env.REACT_APP_BACK_END_URL}/avatar/${data.id}`}
                             alt="Avatar"
                         />
                     </div>

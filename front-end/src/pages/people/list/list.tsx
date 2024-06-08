@@ -40,7 +40,7 @@ export function PeopleList() {
                         <li key={person.id}>
                             <CardPerson
                                 data={person}
-                                onSelect={(id) => navigate(`/people/${id}`)}
+                                onSelect={(id) => navigate(`${process.env.REACT_APP_ROUTE_URL}/people/${id}`)}
                             />
                         </li>
                     );
@@ -49,7 +49,7 @@ export function PeopleList() {
 
             <button
                 className="btn btn-md btn-primary mt-10 fixed bottom-24 right-6 md:bottom-6"
-                onClick={() => navigate('/people/new')}
+                onClick={() => navigate(`${process.env.REACT_APP_ROUTE_URL}/people/new`)}
             >
                 <ResponsiveIcon icon={MdOutlineAddCircleOutline} />
                 <div className="ml-2">{t('people.list.add-new')}</div>

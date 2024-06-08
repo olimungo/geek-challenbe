@@ -22,8 +22,6 @@ function App() {
         <Suspense fallback="...is loading">
             <Header>
                 <HeaderTitle>
-                    <p>toto</p>
-                    <p>titi</p>
                 </HeaderTitle>
             </Header>
 
@@ -33,32 +31,32 @@ function App() {
                 <div className="mt-16 w-full">
                     <div className="h-full">
                         <Routes>
-                            <Route path="/people" element={<PeopleList />} />
+                            <Route path={`${process.env.REACT_APP_ROUTE_URL}/people`} element={<PeopleList />} />
                             <Route
-                                path="/people/factory"
+                                path={`${process.env.REACT_APP_ROUTE_URL}/people/factory`}
                                 element={<PeopleFactory />}
                             />
                             <Route
-                                path="/people/:id"
+                                path={`${process.env.REACT_APP_ROUTE_URL}/people/:id`}
                                 element={<PeopleEdit />}
                             />
                             <Route
-                                path="/menu"
+                                path={`${process.env.REACT_APP_ROUTE_URL}/menu`}
                                 element={<Menu sectionGroups={sectionGroups} />}
                             />
-                            <Route path="/home" element={<Home />} />
-                            <Route path="/about" element={<About />} />
-                            <Route path="/" element={<Home />} />
+                            <Route path={`${process.env.REACT_APP_ROUTE_URL}/home`} element={<Home />} />
+                            <Route path={`${process.env.REACT_APP_ROUTE_URL}/about`} element={<About />} />
+                            <Route path={`${process.env.REACT_APP_ROUTE_URL}/`} element={<Home />} />
 
                             <Route
-                                path="/page-not-found"
+                                path={`${process.env.REACT_APP_ROUTE_URL}/page-not-found`}
                                 element={<PageNotFound />}
                             />
 
                             <Route
                                 path="*"
                                 element={
-                                    <Navigate to="/page-not-found" replace />
+                                    <Navigate to={`${process.env.REACT_APP_ROUTE_URL}/page-not-found`} replace />
                                 }
                             />
                         </Routes>

@@ -1,20 +1,18 @@
 import { Person, sortPeople } from 'models';
 
-export const backEnd = `http://${window.location.hostname}:${process.env.REACT_APP_BACK_END_PORT}`;
-
 export const getPerson = async (id: string) => {
-    return fetch(`${backEnd}/people/${id}`).then((response) => response.json());
+    return fetch(`${process.env.REACT_APP_BACK_END_URL}/people/${id}`).then((response) => response.json());
 };
 
 export const getPeople = (from: number, recordsCount: number) => {
-    return fetch(`${backEnd}/people?from=${from}&recordsCount=${recordsCount}`)
+    return fetch(`${process.env.REACT_APP_BACK_END_URL}/people?from=${from}&recordsCount=${recordsCount}`)
         .then((response) => response.json())
         .then((people: Person[]) => people.sort(sortPeople));
 };
 
 export const searchPeople = (pattern: string) => {
     if (pattern) {
-        return fetch(`${backEnd}/people/search/${pattern}`)
+        return fetch(`${process.env.REACT_APP_BACK_END_URL}/people/search/${pattern}`)
             .then((response) => response.json())
             .then((people: Person[]) => people.sort(sortPeople));
     } else {
@@ -23,7 +21,7 @@ export const searchPeople = (pattern: string) => {
 };
 
 export const updatePerson = (person: Person) => {
-    return fetch(`${backEnd}/people/${person.id}`, {
+    return fetch(`${process.env.REACT_APP_BACK_END_URL}/people/${person.id}`, {
         method: 'PUT',
         headers: {
             Accept: 'application/json, text/plain, */*',
@@ -34,11 +32,11 @@ export const updatePerson = (person: Person) => {
 };
 
 export const deletePerson = (id: string) => {
-    return fetch(`${backEnd}/people/${id}`, { method: 'DELETE' });
+    return fetch(`${process.env.REACT_APP_BACK_END_URL}/people/${id}`, { method: 'DELETE' });
 };
 
 export const uploadAvatar = (id: string, data: FormData) => {
-    return fetch(`${backEnd}/avatar/${id}`, {
+    return fetch(`${process.env.REACT_APP_BACK_END_URL}/avatar/${id}`, {
         method: 'POST',
         body: data,
     });
@@ -46,14 +44,14 @@ export const uploadAvatar = (id: string, data: FormData) => {
 
 export const createPeople = (count: number, withAvatar: boolean) => {
     return fetch(
-        `${backEnd}/people/create?count=${count}&withAvatar=${withAvatar}`
+        `${process.env.REACT_APP_BACK_END_URL}/people/create?count=${count}&withAvatar=${withAvatar}`
     );
 };
 
 export const deletePeople = () => {
-    return fetch(`${backEnd}/people/delete`);
+    return fetch(`${process.env.REACT_APP_BACK_END_URL}/people/delete`);
 };
 
 export const countPeople = () => {
-    return fetch(`${backEnd}/people/count`).then((response) => response.json());
+    return fetch(`${process.env.REACT_APP_BACK_END_URL}/people/count`).then(async (response) => await response.json());
 };

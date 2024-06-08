@@ -7,8 +7,11 @@ i18n.use(Backend)
     .use(LanguageDetector)
     .use(initReactI18next) // passes i18n down to react-i18next
     .init({
-        debug: true,
+        debug: Boolean(Number(process.env.REACT_APP_DEBUG)),
         fallbackLng: 'en',
+        backend: {
+            loadPath: `${process.env.PUBLIC_URL}/locales/{{lng}}/{{ns}}.json`,
+        },
         interpolation: {
             escapeValue: false, // not needed for react as it escapes by default
         },

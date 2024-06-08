@@ -31,13 +31,13 @@ export async function createPeople(count: number, withAvatar: boolean) {
         ids.push(id);
 
         setPerson(id, {
-            firstname: faker.name.firstName(),
-            lastname: faker.name.lastName(),
-            telephone: faker.phone.phoneNumber(),
+            firstname: faker.person.firstName(),
+            lastname: faker.person.lastName(),
+            telephone: faker.phone.number(),
             email: faker.internet.email(),
-            address: faker.address.streetAddress(),
-            city: faker.address.city(),
-            country: faker.address.country(),
+            address: faker.location.streetAddress(),
+            city: faker.location.city(),
+            country: faker.location.country(),
         });
     }
 
@@ -47,19 +47,19 @@ export async function createPeople(count: number, withAvatar: boolean) {
     if (withAvatar) {
         while (ids.length > 0) {
             const id = ids.pop();
-
+            
             await new Promise((resolve) => {
-                downloadImage(faker.image.avatar(), `avatars/${id}`)
-                    .then((filepath) => {
-                        console.log(`> File saved to ${filepath} `);
-                        countSaved++;
-                    })
-                    .catch((url) => {
-                        console.log(`X Getting ${url} failed for ${id} `);
-                        ids.push(id);
-                        countFailed++;
-                    });
-
+                downloadImage(faker.image.avatarGitHub(), `avatars/${id}`)
+                .then((filepath) => {
+                    console.log(`> File saved to ${filepath} `);
+                    countSaved++;
+                })
+                .catch((url) => {
+                    console.log(`X Getting ${url} failed for ${id} `);
+                    ids.push(id);
+                    countFailed++;
+                });
+                
                 // Throttle to prevent orverloading the system
                 setTimeout(() => {
                     resolve(true);

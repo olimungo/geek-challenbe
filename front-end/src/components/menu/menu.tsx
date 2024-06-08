@@ -17,8 +17,8 @@ export function Menu(props: Props) {
         if (uri === location.pathname) {
             return true;
         } else if (
-            uri === '/people' &&
-            location.pathname.match(/\/people\/\b(?!factory\b)\w+/g)
+            uri === `${process.env.REACT_APP_ROUTE_URL}/people` &&
+                location.pathname.match(/\/people\/\b(?!factory\b)\w+/g)
         ) {
             return true;
         }
@@ -56,7 +56,7 @@ export function Menu(props: Props) {
                                         />
                                         {t(section.label)}
 
-                                        {section.uri === '/people' && (
+                                        {section.uri === `${process.env.REACT_APP_ROUTE_URL}/people` && (
                                             <div className="badge badge-sm badge-secondary mr-2">
                                                 {count}
                                             </div>

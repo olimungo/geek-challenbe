@@ -22,7 +22,7 @@ export function Header(props: React.PropsWithChildren<Props>) {
             setDisplayBrand(false);
         }
 
-        if (location.pathname !== '/people') {
+        if (location.pathname !== `${process.env.REACT_APP_ROUTE_URL}/people`) {
             setDisplaySearchBar(false);
         }
     }, [location.pathname, t]);

@@ -71,8 +71,7 @@ export const usePeopleStore = create<PeopleStore>((set, get) => {
             lastIndex += recordsCount;
         },
         searchPeople: async (pattern) => {
-            const people = await searchPeople(pattern);
-            set({ people });
+            set({ people: await searchPeople(pattern) });
         },
         updatePerson: async (person) => {
             return updatePerson(person).then((response) => {

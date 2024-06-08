@@ -5,7 +5,6 @@ import { Person } from 'models';
 import { CrudActions } from 'components';
 import { useTranslation } from 'react-i18next';
 import { usePeopleStore } from 'hooks';
-import { backEnd } from 'services';
 
 const defaultPerson: Person = {
     id: 'new',
@@ -90,7 +89,7 @@ export function PeopleEdit() {
                             <div className="w-24 rounded-full">
                                 <img
                                     id="avatar"
-                                    srcSet={`${backEnd}/avatar/${id}`}
+                                    srcSet={`${process.env.REACT_APP_BACK_END_URL}/avatar/${id}`}
                                     alt="Avatar"
                                 />
                             </div>

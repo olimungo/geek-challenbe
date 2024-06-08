@@ -9,14 +9,14 @@
         "just-build": "tsc --build",
         "build": "tsc --build; docker build -t olimungo/geek-back-end .",
         "push-rpi": "tsc --build; docker buildx build --platform linux/arm/v7 -t olimungo/geek-back-end:$npm_config_target_version --push .",
-        "push-linux": "tsc --build; docker build -t olimungo/geek-back-end:$npm_config_target_version .; docker push olimungo/geek-back-end:$npm_config_target_version",
+        "push-linux": "export DOCKER_DEFAULT_PLATFORM=linux/amd64; tsc --build; docker build -t olimungo/geek-back-end:1.0 .; docker push olimungo/geek-back-end:1.0",
         "create-person": "ts-node scripts/mock-data/create-person.ts"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "@faker-js/faker": "^6.0.0-beta.0",
+        "@faker-js/faker": "^8.4.1",
         "body-parser": "^1.19.2",
         "cors": "^2.8.5",
         "express": "^4.17.3",
